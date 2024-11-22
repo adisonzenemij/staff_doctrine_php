@@ -17,10 +17,13 @@ Instalar Dependencias: composer require
 
 ## Configuración
 ```yml
-composer require vlucas/phpdotenv
+Environment: composer require vlucas/phpdotenv
 ```
 ```yml
-composer require doctrine/orm
+UUID: composer require ramsey/uuid
+```
+```yml
+Doctrine: composer require doctrine/orm
 ```
 
 ## Páginas Oficiales
