@@ -17,6 +17,9 @@ Instalar Dependencias: composer install
 
 ## Configuración
 ```yml
+composer require vlucas/phpdotenv
+```
+```yml
 composer require doctrine/orm
 ```
 
