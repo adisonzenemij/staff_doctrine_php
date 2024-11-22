@@ -1,0 +1,19 @@
+{
+    "name": "developer/staff_doctrine_php",
+    "description": "Developer Software",
+    "type": "project",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Adison Jimenez",
+            "email": "developer@adisonjimenez.net"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {}
+}
