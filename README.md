@@ -9,26 +9,17 @@
 
 ## Instalación
 ```yml
-    Clonar Repostorio: git clone <url_repo>
+Clonar Repostorio: git clone <url_repo>
 ```
 ```yml
-    Instalar Dependencias: composer install
+Instalar Dependencias: composer install
 ```
 
 ## Configuración
 ```yml
-    composer require doctrine/orm
+composer require doctrine/orm
 ```
 
-<table align="center">
-    <thead>
-        <tr>
-            <th>Desarrollador</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>Adison Jimenez</td>
-        </tr>
-    </tbody>
-</table>
+## Páginas Oficiales
+
+[Web Principal](https://www.adisonjimenez.net) | [Web Desarrollo](https://www.engsoft.app)
