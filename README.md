@@ -1,21 +1,23 @@
 <h1 align="center">🔥 Libreria Doctrine 🧑‍💻</h1>
-<p align="center">
-    <img src="https://img.shields.io/badge/php-7-blue.svg" alt="Licencia MIT" />
-</p>
 
 ## Introducción
 
 
 ## Requisitos
+* Composer
+* PHP
+
+## Instalación
+```yml
+    Clonar Repostorio: git clone <url_repo>
 ```
-    PHP
-    Composer
+```yml
+    Instalar Dependencias: composer install
 ```
 
 ## Configuración
-```
-    Clonar Repostorio: git clone <url_repo>
-    Instalar Dependencias: composer install
+```yml
+    composer require doctrine/orm
 ```
 
 <table align="center">
