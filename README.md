@@ -21,5 +21,10 @@ composer require doctrine/orm
 ```
 
 ## Páginas Oficiales
-
-[Web Principal](https://www.adisonjimenez.net) | [Web Desarrollo](https://www.engsoft.app)
+<a href="https://www.adisonjimenez.net" target="_blank">
+    <span>Web Principal</span>
+</a>
+|
+<a href="https://www.engsoft.app" target="_blank">
+    <span>Web Desarrollo</span>
+</a>
