@@ -32,6 +32,18 @@
          */
         private $fdPass;
 
+        # Relaciones Mapeadas
+
+        /**
+         * @ORM\OneToMany(targetEntity="TgUserEmailEntity", mappedBy="tgUserData")
+         */
+        private $tgUserEmail;
+
+        /**
+         * @ORM\OneToMany(targetEntity="TgUserIpEntity", mappedBy="tgUserData")
+         */
+        private $tgUserIp;
+
         # Constructor para generar el UUID automáticamente al crear la entidad
         public function __construct() {
             if (is_null($this->atRegister)) {
@@ -78,5 +90,27 @@
         # Capturar valores del registro
         public function setFdPass($fdPass) {
             $this->fdPass = $fdPass;
+        }
+
+        # Relaciones Mapeadas
+
+        # Obtener valores del registro
+        public function getTgUserEmail() {
+            return $this->tgUserEmail;
+        }
+
+        # Capturar valores del registro
+        public function setTgUserEmail($tgUserEmail) {
+            $this->tgUserEmail = $tgUserEmail;
+        }
+
+        # Obtener valores del registro
+        public function getTgUserIp() {
+            return $this->tgUserIp;
+        }
+
+        # Capturar valores del registro
+        public function setTgUserIp($tgUserIp) {
+            $this->tgUserIp = $tgUserIp;
         }
     }

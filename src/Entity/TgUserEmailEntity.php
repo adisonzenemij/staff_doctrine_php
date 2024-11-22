@@ -25,7 +25,8 @@
         # Relaciones Mapeadas
 
         /**
-         * @ORM\OneToMany(targetEntity="TgUserDataEntity", mappedBy="tgUserData")
+         * @ORM\ManyToOne(targetEntity="TgUserDataEntity")
+         * @ORM\JoinColumn(name="tg_user_data", nullabe=false, referencedColumnName="atRegister")
          */
         private $tgUserData;
 
