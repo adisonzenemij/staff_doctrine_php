@@ -28,6 +28,12 @@ Doctrine: composer require doctrine/orm
 ```yml
 Annotations: doctrine/annotations
 ```
+composer require doctrine/dbal
+composer require doctrine/common
+composer require doctrine/migrations
+composer require doctrine/inflector
+composer require doctrine/persistence
+composer require symfony/cache
 
 ## Páginas Oficiales
 <div align="center">

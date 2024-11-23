@@ -1,10 +1,9 @@
 <?php
     namespace App\Doctrine;
 
+    use App\Doctrine\BaseDoctrine;
     use PDO;
     use PDOException;
-
-    use App\Doctrine\BaseDoctrine;
     
     class OrmDoctrine {
         private $server;

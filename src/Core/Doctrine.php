@@ -2,8 +2,8 @@
     namespace App\Core;
 
     use Doctrine\ORM\EntityManager;
-    use Doctrine\ORM\Tools\Setup;
-    use Doctrine\ORM\Tools\SchemaTool;
+    use Doctrine\ORM\ORMSetup;
+    use Doctrine\DBAL\Logging\EchoSQLLogger;
 
     class Doctrine {
         private $debug;
@@ -28,48 +28,38 @@
             $this->user = $_ENV['DB_USER'];
         }
 
-        public function manager(): EntityManager {
-            # Ruta a las entidades en tu proyecto
-            $paths = [
-                ENT . '/application',
-                ENT . '/technology',
-            ];
-            # Configurar el uso de anotaciones
-            $config = Setup::createAnnotationMetadataConfiguration(
-                $paths,
-                $this->debug,
-                null,
-                null,
-                false
+        public function manager() {
+
+           // Crear configuración para Doctrine ORM
+            $config = ORMSetup::createAttributeMetadataConfiguration(
+                paths: [ENT . '/application', ENT . '/technology'],
+                isDevMode: $this->debug
             );
-            # Crear la entidad gestionada o administrada
-            $entityManager = EntityManager::create($this->params(), $config);
 
-            # Activar el SQL Logger
-            $entityManager->getConfiguration()->setSQLLogger(new \Doctrine\DBAL\Logging\EchoSQLLogger());
+            // Configuración de conexión
+            $connectionParams = [
+                'dbname'   => $this->name,
+                'user'     => $this->user,
+                'password' => $this->pass,
+                'host'     => $this->host,
+                'driver'   => 'pdo_mysql',
+                'charset'  => $this->chst,
+            ];
 
-            # Depuración: Verificar las entidades cargadas
-            $metadatas = $entityManager->getMetadataFactory()->getAllMetadata();
-            if (empty($metadatas)) {
-                echo "No entities found!";
-            } else {
-                echo "Entities loaded: " . count($metadatas);
-            }
+            // Crear el EntityManager
+            $entityManager = EntityManager::create($connectionParams, $config);
 
-            # Crear las tablas (si no existen)
-            $schemaTool = new SchemaTool($entityManager);
-            try {
-                $schemaTool->createSchema($metadatas);
-                echo "Schema created successfully!";
-            } catch (\Exception $e) {
-                echo "Error creating schema: " . $e->getMessage();
-            }
-            # Retornar entidad gestionada
+            // Configurar SQL Logger
+            $entityManager->getConnection()
+                ->getConfiguration()
+                ->setSQLLogger(new EchoSQLLogger());
+
+            // Retornar EntityManager
             return $entityManager;
         }
 
         # Configuración de la conexión
-        private function params(): array {
+        private function params() {
             return [
                 'driver'   => 'pdo_mysql',
                 'host'     => $this->host,
