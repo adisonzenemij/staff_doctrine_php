@@ -1,16 +1,47 @@
 <?php
     # Directorio Proyecto
-    define('DIR_STRG', __DIR__);
+    define('DIR', __DIR__);
     # Incluir archivos de configuraciones
-    require DIR_STRG . '/config/autoload.php';
-    require DIR_STRG . '/vendor/autoload.php';
-    require DIR_STRG . '/libraries/envmnt.php';
+    require DIR . '/config/autoload.php';
+    require DIR . '/vendor/autoload.php';
+    require DIR . '/libraries/envmnt.php';
+
     # Cargar el enrutador
+    use App\Core\Doctrine;
     use App\Core\Load;
     use App\Core\Router;
+    use App\Doctrine\BaseDoctrine;
+    use App\Doctrine\OrmDoctrine;
+    
     # Crear instancia del enrutador
     $router = new Router();
     # Crear instancia para cargar las rutas
-    $routeConfig = new Load($router);
+    $config = new Load($router);
     # Manejar la solicitud
     $router->handleRequest();
+
+    # Instanciar base de datos
+    $base = new BaseDoctrine();
+    # Acceder a la funcion
+    $server = $base->server();
+
+    # Instanciar orm para la bd
+    $orm = new OrmDoctrine($base);
+    # Ejecutar base de datos
+    $orm->execute();
+
+    if ($_ENV['DB_ORM'] !== "drop") {
+        # Verificar conexion de prueba
+        $server = $server ? $base->connect() : "";
+        # Verificar base de datos
+        $verify = $server ? $base->verify() : "";
+
+        # Listar tablas de la base de datos
+        $tables = $verify ? $base->table() : "";
+        if (empty($tables)) { echo "Empty Tables"; }
+        if (!empty($tables)) { echo "Tables Founds"; }
+        if (!empty($tables)) { print_r($tables); }
+
+        $doctrine = new Doctrine();
+        $doctrine->manager();
+    }

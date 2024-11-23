@@ -25,6 +25,9 @@ UUID: composer require ramsey/uuid
 ```yml
 Doctrine: composer require doctrine/orm
 ```
+```yml
+Annotations: doctrine/annotations
+```
 
 ## Páginas Oficiales
 <div align="center">

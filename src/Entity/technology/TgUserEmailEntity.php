@@ -1,9 +1,9 @@
 <?php
-    namespace App\Entity;
+    namespace App\Entity\Technology;
 
+    use Doctrine\ORM\Mapping as ORM;
     use Ramsey\Uuid\Guid\Guid;
     use Ramsey\Uuid\Guid\GuidInterface;
-    use Doctrine\ORM\Mapping as mappign;
 
     /**
      * @ORM\Entity
