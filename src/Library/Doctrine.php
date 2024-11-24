@@ -31,25 +31,24 @@
         }
 
         public function manager() {
-
-           // Crear configuración para Doctrine ORM
+            # Crear configuración para Doctrine ORM
             $config = ORMSetup::createAttributeMetadataConfiguration(
                 paths: [ENT . '/application', ENT . '/technology'],
                 isDevMode: $this->debug
             );
 
-            // Configuración de conexión
+            # Configuración de conexión
             $params = $this->params();
 
-            // Crear el EntityManager
+            # Crear el EntityManager
             $entityManager = EntityManager::create($params, $config);
 
-            // Configurar SQL Logger
+            # Configurar SQL Logger
             $entityManager->getConnection()
                 ->getConfiguration()
                 ->setSQLLogger(new EchoSQLLogger());
 
-            // Retornar EntityManager
+            # Retornar EntityManager
             return $entityManager;
         }
 

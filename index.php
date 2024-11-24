@@ -5,6 +5,8 @@
     # Incluir archivos de configuraciones
     require DIR . '/config/autoload.php';
     require DIR . '/vendor/autoload.php';
+    
+    use Dotenv\Dotenv;
 
     # Cargar variables
     use App\Library\Envmnt;
@@ -28,6 +30,11 @@
     $config = new Load($router);
     # Manejar la solicitud
     $router->handleRequest();
+
+    # Asignar directorio de variables
+    $dotenv = Dotenv::createImmutable(ENVS);
+    # Cargar doctrine
+    $dotenv->load();
 
     # Instanciar base de datos
     $config = new ConfigData();
