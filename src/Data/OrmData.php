@@ -1,11 +1,11 @@
 <?php
-    namespace App\Doctrine;
+    namespace App\Data;
 
-    use App\Doctrine\BaseDoctrine;
+    use App\Data\ConfigData;
     use PDO;
     use PDOException;
     
-    class OrmDoctrine {
+    class OrmData {
         private $server;
         private $verify;
 
@@ -13,11 +13,11 @@
         private $name;
         private $orm;
 
-        public function __construct(BaseDoctrine $baseDoctrine) {
-            $this->server = $baseDoctrine->server();
-            $this->verify  = $baseDoctrine->verify();
+        public function __construct(ConfigData $configData) {
+            $this->server = $configData->server();
+            $this->verify  = $configData->verify();
 
-            $this->chst = $_ENV['DB_CHST'];
+            $this->chst = $_ENV['DB_CHARSET'];
             $this->name = $_ENV['DB_NAME'];
             $this->orm = $_ENV['DB_ORM'];
         }

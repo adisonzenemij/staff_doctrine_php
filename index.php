@@ -14,8 +14,13 @@
     use App\Core\Router;
 
     use App\Library\Doctrine;
-    use App\Doctrine\BaseDoctrine;
-    use App\Doctrine\OrmDoctrine;
+    use App\Data\ConfigData;
+    use App\Data\OrmData;
+    
+    # Crear instancia del entorno
+    $envmnt = new Envmnt();
+    # Obtener variables de entorno
+    $envmnt->execute();
     
     # Crear instancia del enrutador
     $router = new Router();
@@ -25,23 +30,23 @@
     $router->handleRequest();
 
     # Instanciar base de datos
-    $base = new BaseDoctrine();
+    $config = new ConfigData();
     # Acceder a la funcion
-    $server = $base->server();
+    $server = $config->server();
 
     # Instanciar orm para la bd
-    $orm = new OrmDoctrine($base);
+    $orm = new OrmData($config);
     # Ejecutar base de datos
     $orm->execute();
 
     if ($_ENV['DB_ORM'] !== "drop") {
         # Verificar conexion de prueba
-        $server = $server ? $base->connect() : "";
+        $server = $server ? $config->connect() : "";
         # Verificar base de datos
-        $verify = $server ? $base->verify() : "";
+        $verify = $server ? $config->verify() : "";
 
         # Listar tablas de la base de datos
-        $tables = $verify ? $base->table() : "";
+        $tables = $verify ? $config->table() : "";
         if (empty($tables)) { echo "Empty Tables"; }
         if (!empty($tables)) { echo "Tables Founds"; }
         if (!empty($tables)) { print_r($tables); }

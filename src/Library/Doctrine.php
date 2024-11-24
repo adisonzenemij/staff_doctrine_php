@@ -9,6 +9,7 @@
         private $debug;
 
         private $chst;
+        private $cnnt;
         private $drvr;
         private $host;
         private $name;
@@ -17,10 +18,11 @@
         private $user;
 
         public function __construct() {
-            $this->debug = $_ENV['DEBUG'];
+            $this->debug = $_ENV['APP_DEBUG'];
 
-            $this->chst = $_ENV['DB_CHST'];
-            $this->drvr = $_ENV['DB_DRVR'];
+            $this->chst = $_ENV['DB_CHARSET'];
+            $this->cnnt = $_ENV['DB_CONNECT'];
+            $this->drvr = $_ENV['DB_DRIVER'];
             $this->host = $_ENV['DB_HOST'];
             $this->name = $_ENV['DB_NAME'];
             $this->pass = $_ENV['DB_PASS'];
@@ -37,17 +39,10 @@
             );
 
             // Configuración de conexión
-            $connectionParams = [
-                'dbname'   => $this->name,
-                'user'     => $this->user,
-                'password' => $this->pass,
-                'host'     => $this->host,
-                'driver'   => 'pdo_mysql',
-                'charset'  => $this->chst,
-            ];
+            $params = $this->params();
 
             // Crear el EntityManager
-            $entityManager = EntityManager::create($connectionParams, $config);
+            $entityManager = EntityManager::create($params, $config);
 
             // Configurar SQL Logger
             $entityManager->getConnection()
@@ -61,7 +56,7 @@
         # Configuración de la conexión
         private function params() {
             return [
-                'driver'   => 'pdo_mysql',
+                'driver'   => $this->drvr,
                 'host'     => $this->host,
                 'dbname'   => $this->name,
                 'user'     => $this->user,

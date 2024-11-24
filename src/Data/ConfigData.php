@@ -1,14 +1,15 @@
 <?php
-    namespace App\Doctrine;
+    namespace App\Data;
 
     use PDO;
     use PDOException;
     
-    class BaseDoctrine {
+    class ConfigData {
         private $pdo;
         private $dsn;
 
         private $chst;
+        private $cnnt;
         private $drvr;
         private $host;
         private $name;
@@ -17,8 +18,9 @@
         private $user;
 
         public function __construct() {
-            $this->chst = $_ENV['DB_CHST'];
-            $this->drvr = $_ENV['DB_DRVR'];
+            $this->chst = $_ENV['DB_CHARSET'];
+            $this->cnnt = $_ENV['DB_CONNECT'];
+            $this->drvr = $_ENV['DB_DRIVER'];
             $this->host = $_ENV['DB_HOST'];
             $this->name = $_ENV['DB_NAME'];
             $this->pass = $_ENV['DB_PASS'];
@@ -28,7 +30,7 @@
 
         # Generar data source name
         private function source($base) {
-            $data = "{$this->drvr}:";
+            $data = "{$this->cnnt}:";
             $data .= "host={$this->host};";
             $data .= "port={$this->port};";
             $data .= $base ? "dbname={$this->name};" : "";

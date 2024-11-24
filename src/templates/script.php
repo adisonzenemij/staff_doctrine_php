@@ -1,7 +1,7 @@
 <!--Variables Entorno-->
 <script>
     let appUrl = "<?= APP_URL; ?>";
-    let appDebug = "<?= $_ENV['DEBUG']; ?>";
+    let appDebug = "<?= $_ENV['APP_DEBUG']; ?>";
     if (appDebug) { console.log(`appUrl: ${appUrl}`); }
 </script>
 <!--Librerias-->
