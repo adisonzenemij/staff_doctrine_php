@@ -114,3 +114,4 @@
             $this->tgUserIp = $tgUserIp;
         }
     }
+?>

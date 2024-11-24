@@ -1,5 +1,5 @@
 <?php
-    namespace App\Core;
+    namespace App\Library;
 
     use Doctrine\ORM\EntityManager;
     use Doctrine\ORM\ORMSetup;
@@ -74,3 +74,4 @@
             ];
         }
     }
+?>

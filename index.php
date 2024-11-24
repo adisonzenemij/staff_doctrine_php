@@ -1,15 +1,19 @@
 <?php
     # Directorio Proyecto
     define('DIR', __DIR__);
+
     # Incluir archivos de configuraciones
     require DIR . '/config/autoload.php';
     require DIR . '/vendor/autoload.php';
-    require DIR . '/libraries/envmnt.php';
 
+    # Cargar variables
+    use App\Library\Envmnt;
     # Cargar el enrutador
-    use App\Core\Doctrine;
     use App\Core\Load;
+    # Cargar el enrutador
     use App\Core\Router;
+
+    use App\Library\Doctrine;
     use App\Doctrine\BaseDoctrine;
     use App\Doctrine\OrmDoctrine;
     
@@ -45,3 +49,4 @@
         $doctrine = new Doctrine();
         $doctrine->manager();
     }
+?>

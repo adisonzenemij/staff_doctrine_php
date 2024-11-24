@@ -70,3 +70,4 @@
             $this->tgUserData = $tgUserData;
         }
     }
+?>
