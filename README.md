@@ -20,32 +20,14 @@ Actualizar Proyecto: composer dump-autoload
 ## Configuración
 ```yml
 Environment: composer require vlucas/phpdotenv
-```
-```yml
 UUID: composer require ramsey/uuid
-```
-```yml
 Doctrine: composer require doctrine/orm
-```
-```yml
 Annotations: doctrine/annotations
-```
-```yml
 Doctrine: composer require doctrine/dbal
-```
-```yml
 Doctrine: composer require doctrine/common
-```
-```yml
 Doctrine: composer require doctrine/migrations
-```
-```yml
 Doctrine: composer require doctrine/inflector
-```
-```yml
 Doctrine: composer require doctrine/persistence
-```
-```yml
 Doctrine: composer require symfony/cache
 ```
 
